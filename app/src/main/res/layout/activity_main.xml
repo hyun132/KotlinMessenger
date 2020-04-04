@@ -19,7 +19,7 @@
         android:paddingLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#FFF"
+        android:background="@drawable/rounded_edittext_register_login"
         android:hint="Name" />
 
     <EditText
@@ -32,7 +32,7 @@
         android:paddingLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#FFF"
+        android:background="@drawable/rounded_edittext_register_login"
         android:hint="E-mail"
         android:inputType="textEmailAddress" />
 
@@ -46,7 +46,7 @@
         android:paddingLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#FFF"
+        android:background="@drawable/rounded_edittext_register_login"
         android:hint="Password"
         android:inputType="textPassword" />
 
@@ -56,7 +56,9 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
+        android:background="@drawable/rounded_button"
         android:text="RESITER"
+        android:textColor="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
 
