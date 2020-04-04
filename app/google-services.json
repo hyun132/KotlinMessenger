@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "695464720247",
+    "firebase_url": "https://kotlinmessneger.firebaseio.com",
+    "project_id": "kotlinmessneger",
+    "storage_bucket": "kotlinmessneger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695464720247:android:e792ec50054b3d3ce19372",
+        "android_client_info": {
+          "package_name": "com.example.kotlinmessenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695464720247-v4mi28io6lso2rpabqub8ok7ss4vfmtn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1tYdJDriCzGDartRMfkI4HBgYvTJiTwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695464720247-v4mi28io6lso2rpabqub8ok7ss4vfmtn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
