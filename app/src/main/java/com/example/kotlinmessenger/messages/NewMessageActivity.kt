@@ -1,8 +1,11 @@
-package com.example.kotlinmessenger
+package com.example.kotlinmessenger.messages
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.kotlinmessenger.R
+import com.example.kotlinmessenger.models.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -36,6 +39,11 @@ class NewMessageActivity : AppCompatActivity() {
 
         fetchUsers()
     }
+
+    companion object{
+        val USER_KEY = "USER_KEY"
+    }
+
     private fun fetchUsers(){
         val ref =FirebaseDatabase.getInstance().getReference("/users")
         ref.addListenerForSingleValueEvent(object : ValueEventListener{
@@ -52,6 +60,19 @@ class NewMessageActivity : AppCompatActivity() {
                         adapter.add(UserItem(user))
                     }
                 }
+
+                adapter.setOnItemClickListener { item, view ->
+                    val userItem = item as UserItem
+//                    여기 인텐트에 들어가는 context가 불확실해서? view를 통해서 가져와줌..아마도?
+                    val intent = Intent(view.context,ChatLogActivity::class.java)
+//                    intent.putExtra(USER_KEY, userItem.user.username)
+                    intent.putExtra(USER_KEY,userItem.user)
+                    startActivity(intent)
+
+//                    back버튼 누르면 메인페이지로 돌아가도록(채팅목록페이지)
+                    finish()
+                }
+
                 recyclerview_newmessage.adapter=adapter
             }
 
@@ -59,7 +80,7 @@ class NewMessageActivity : AppCompatActivity() {
     }
 }
 
-class UserItem(val user:User): Item<GroupieViewHolder>(){
+class UserItem(val user: User): Item<GroupieViewHolder>(){
     override fun getLayout(): Int {
         return R.layout.user_row_new_message
     }

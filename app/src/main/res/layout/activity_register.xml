@@ -7,7 +7,7 @@
     android:background="#A7D66F"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".RegisterActivity">
+    tools:context=".registerlogin.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
