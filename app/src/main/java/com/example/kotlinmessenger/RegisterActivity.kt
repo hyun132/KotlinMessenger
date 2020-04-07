@@ -96,6 +96,9 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
     private fun uploadImageToFirebaseStorage(){
+
+//        나중에 사용자가 이미지 선택 안했을 경우 기본이미지를 넣어주는 코드 추가할 것
+
         if(selectedPhotoUri == null) return
 
 //        filename is very long string
@@ -126,8 +129,16 @@ class RegisterActivity : AppCompatActivity() {
         ref.setValue(user)
             .addOnSuccessListener {
                 Log.d("RegisterActiviy", "Finally we saved the user to Firebase Database")
+
+                var intent = Intent(this,LatesMessageActivity::class.java)
+
+//                뒤로가기 클릭하면 이전화면이 뜨지 않도록 하는 부분..?
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
             }
     }
 }
 
-class User(val uid : String , val username : String, val profileImageUrl : String)
+class User(val uid : String , val username : String, val profileImageUrl : String){
+    constructor(): this("","","")
+}
