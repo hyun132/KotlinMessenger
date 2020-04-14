@@ -49,7 +49,9 @@ class ChatLogActivity : AppCompatActivity() {
     }
 
     private fun listenForMessage(){
-        val ref = FirebaseDatabase.getInstance().getReference("/messages")
+        val fromId = FirebaseAuth.getInstance().uid
+        val toId=toUser?.uid
+        val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId")
 //        /messages에 속해있는 모든 데이터들에 이벤트가 발생할 시 실행되는것같음
         ref.addChildEventListener(object : ChildEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -95,16 +97,22 @@ class ChatLogActivity : AppCompatActivity() {
         if(fromId == null) return
 
 //        how to we actually send a message to firebase...
-        var reference = FirebaseDatabase.getInstance().getReference("/messages").push()
+//        var reference = FirebaseDatabase.getInstance().getReference("/messages").push()
+        var reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
+
+        var toReference = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
 
         val chatMessage=ChatMessage(reference.key!!,text,fromId,toId,System.currentTimeMillis()/1000)
         reference.setValue(chatMessage)
             .addOnSuccessListener {
                 Log.d(TAG,"Saved our chat message:${reference.key}")
+                edittext_chat_log.text.clear()
+                recyclerview_chat_log.scrollToPosition(adapter.itemCount-1)
             }
             .addOnFailureListener {
 
             }
+        toReference.setValue(chatMessage)
     }
 }
 
